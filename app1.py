@@ -25,12 +25,12 @@ user_setting = ""
 
 if menu == "홈":
     st.header("홈 페이지")
-    st.write("이곳은 앱의 홈 페이지입니다.")
-
+    st.markdown('---')
+    st.markdown("ai의 한마디")
     data = {
     "model": "solar-1-mini-chat",  # 사용할 모델명
     "messages": [
-        {"role": "user", "content": "할 짓 추천에 대한 사실에 한마디만 해줘!"}
+        {"role": "user", "content": "할 짓 추천에 대한 사실에 한마디만 해줘 사나이같이!"}
         ]
     }
 
@@ -40,9 +40,10 @@ if menu == "홈":
     # 결과 출력
     if response.status_code == 200:
         result = response.json()
-        st.text(result['choices'][0]['message']['content'])
+        st.markdown(f"**{result['choices'][0]['message']['content']}**")
     else:
         print(f"Error: {response.status_code}, {response.text}")
+    st.markdown('---')
 
 
 
