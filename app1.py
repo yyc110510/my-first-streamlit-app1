@@ -1,4 +1,21 @@
 import streamlit as st
+import requests
+import json
+import os
+
+
+# API 키와 요청 헤더 설정
+# API 키를 변수에 직접 할당합니다.
+upstage_api_key = "up_MrJrannMiFutFLHHuSgG8USjDwzUg"
+
+url = "https://api.upstage.ai/v1/chat/completions"
+
+headers = {
+    "Authorization": f"Bearer {upstage_api_key}",
+    "Content-Type": "application/json"
+}
+
+
 
 st.title("할 짓 추천하기!")
 
@@ -9,6 +26,23 @@ user_setting = ""
 if menu == "홈":
     st.header("홈 페이지")
     st.write("이곳은 앱의 홈 페이지입니다.")
+
+    data = {
+    "model": "solar-1-mini-chat",  # 사용할 모델명
+    "messages": [
+        {"role": "user", "content": "할 짓 추천에 대한 사실에 한마디만 해줘!"}
+        ]
+    }
+
+    # API 호출
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+
+    # 결과 출력
+    if response.status_code == 200:
+        result = response.json()
+        st.text(result['choices'][0]['message']['content'])
+    else:
+        print(f"Error: {response.status_code}, {response.text}")
 
 
 
