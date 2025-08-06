@@ -53,3 +53,19 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://docs.google.com/presentation/d/1AcmMQC9XHOX6a_Aq1bzgDcUQrX21xkkAj5o2Ow6FdZw/edit?slide=id.g373310d9267_0_0#slide=id.g373310d9267_0_0
